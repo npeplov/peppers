@@ -1,0 +1,39 @@
+Тз перцы
+Игра
+6 дивов рандомный порядок
+
+1 число 3 знака рандомное таргет, загаданное, туФайнд math rnd
+5 чисел Рандомных не верных array math rnd
+
+Рандомный цвет заливки
+
+Он клик если 
+
+const arr = []
+for (i = 1; i < 6; i++) { 
+const rndNum = math.rnd()
+const rndPos = math.rnd()
+if (i === rndPos)
+arr.push(targetNum)
+arr.push(rndNum)
+}
+
+arr.forEach((el)=>{
+const button = createElement("button")
+button.innerText = el
+div.append(button)
+}
+
+addEventListener(div).onClick
+counterClick++
+if (e.target.innerText === targetNum) win()
+
+function win(){
+div.
+innerText = `
+clicks: ${} counterClick
+timer setTimeout
+
+  `
+  }
+Не арр а map
