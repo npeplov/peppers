@@ -1,12 +1,10 @@
-const wrapper = document.querySelector(".main__wrapper");
+const fieldWrapper = document.querySelector(".field__wrapper");
 
 // v 1 timer, уровень вверху
 // v 2 после окончания таймера - итоги
 // v верстка дива, v кнопка стили
-// 3 подсчет очков
-// - нейронов синим
-// - прогрессбар
-// 4 рандомный цвет бэкграунда
+// v 4 рандомный цвет бэкграунда
+
 // 5 вращение
 // 6 рефактор
 // - без харкод величин в контейнере
@@ -18,6 +16,9 @@ const wrapper = document.querySelector(".main__wrapper");
 // 11 при неправильном X и новый экран
 // 12 history of results
 // 8d3dca
+// 3 подсчет очков
+// - нейронов синим - добавляются в прогрессбар
+// - прогрессбар
 
 const results = {
   current: 105,
@@ -56,9 +57,17 @@ const timer = () => {
 };
 
 const createField = (level = 1) => {
+  const appWrapper = document.querySelector('.app__wrapper');
   const field = document.createElement("div");
   field.classList.add("grid-container");
-  wrapper.appendChild(field);
+  fieldWrapper.appendChild(field);
+  appWrapper.style.background = getRndColor(4);
+
+  // fieldWrapper.style.background = 
+  // parent element установить цвет
+  // у результата и игры одинаковое название класса
+  // 1 удалять элемент при завершении - не подходит так как выезжает уже покрашенный
+  // 
 
   const { numbers, digits } = levels[level];
 
@@ -70,7 +79,7 @@ const createField = (level = 1) => {
 
 const removeField = () => {
   const field = document.querySelector(".grid-container");
-  wrapper.removeChild(field);
+  fieldWrapper.removeChild(field);
 };
 
 const fillField = (level = 1) => {
@@ -80,7 +89,7 @@ const fillField = (level = 1) => {
   const { numbers, digits } = levels[level];
 
   const numbersArr = getRndNumbersArr(digits, numbers);
-  const targetInd = getRndNumber(numbers);
+  const targetInd = getRndNumber(numbers-1, 0);
   targetNum = numbersArr[targetInd];
 
   goal.innerText = targetNum;
@@ -110,23 +119,23 @@ function checkNumber({ target }) {
   }
 }
 
-const getRndColor = () => {
+const getRndColor = (max = 5) => {
   const colors = {
     0: "#e97dad",
     1: "#874bbf",
     2: "#6db7e8",
-    3: "transparent",
-    4: "#a0c65d",
+    3: "#a0c65d",
+    4: "transparent",
   };
-  const max = 5;
 
   // TODO: задать мин число
   const ind = Math.floor(Math.random() * max);
   return colors[ind];
 };
 
-const getRndNumber = (max) => {
-  const num = Math.floor(Math.random() * max);
+const getRndNumber = (max, min = 1) => {
+  const num = Math.floor(Math.random() * (max - min + 1)) + min;
+  if (num === undefined) console.log(max, min);
   return num;
 };
 

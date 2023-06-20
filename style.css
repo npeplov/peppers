@@ -25,6 +25,7 @@ body {
   max-width: 650px;
   margin-inline: auto;
   flex-direction: column;
+  margin-top: 30px;
   gap: 30px;
 }
 
@@ -38,7 +39,7 @@ body {
 
 .statistics__list {
   padding: 2px;
-  background: #93d2f0fa;
+  background: inherit;
   width: 500px;
   list-style: none;
   display: flex;
@@ -76,7 +77,6 @@ button {
 .goal {
   width: 535px;
   margin-inline: auto;
-  background: #6db7e8;
   box-shadow: 0 7px 35px 0 rgba(0, 0, 0, .3);
   padding: 10px 20px;
   display: flex;
@@ -93,8 +93,14 @@ button {
   font-size: 50px;
 }
 
-.main__wrapper {
-  background: #6db7e8;
+.app__wrapper {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field__wrapper {
+  background: inherit;
   padding: 0 9% 9% 9%;
 }
 
