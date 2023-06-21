@@ -137,6 +137,7 @@ main {
   gap: 30px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .field__wrapper {
@@ -251,4 +252,33 @@ main {
 .summary__header h2 {
   font-family: Open Sans;
   font-weight: 300;
+}
+
+.modal {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  animation-duration: 1s;
+  transform: translateX(100vw);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

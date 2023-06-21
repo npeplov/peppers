@@ -4,25 +4,28 @@ const fieldWrapper = document.querySelector(".field__wrapper");
 // v 2 после окончания таймера - итоги
 // v верстка дива, v кнопка стили
 // v 4 рандомный цвет бэкграунда
-
 // v 5 вращение
 // - выписать на каком уровне появляется
 // - какой градус
-// - увеличение
-// - код
-// 6 рефактор
-// - без харкод величин в контейнере
-// - тустринг ===
 // 7 страница старта
 // 8 страница правил
 // 9 таймер 3-2-1 старт
-// 10 при лвлапе вывести V
-// 11 при неправильном X и новый экран
+// v 10 при лвлапе вывести 
+// v модалка position: absolute,
+// v zindex 2
+// v transform: translate()
+// v 11 при неправильном X и новый экран
+
+// 13 вывести итоги если таймер закончен
+
 // 12 history of results
 // 8d3dca
 // 3 подсчет очков
 // - нейронов синим - добавляются в прогрессбар
 // - прогрессбар
+// 6 рефактор
+// - без харкод величин в контейнере
+// - тустринг ===
 
 const results = {
   current: 105,
@@ -61,6 +64,7 @@ const timer = () => {
 };
 
 const createField = (level = 1) => {
+  
   const appWrapper = document.querySelector('.app__wrapper');
   const field = document.createElement("div");
   field.classList.add("grid-container");
@@ -111,15 +115,31 @@ const fillField = (level = 1) => {
 };
 
 function checkNumber({ target }) {
+  const answerStatusModal = document.querySelector(".answer-status");
+  answerStatusModal.style.animationName = "";
+
+  notcorrectImg = document.querySelector(".notcorrect");
+  correctImg = document.querySelector(".correct");
+
+  correctImg.style.display = "none";
+  notcorrectImg.style.display = "none";
+
   if (target.innerText == targetNum) {
     level < 9 ? (level += 1) : (level = 9);
-    removeField();
-    createField(level);
-    fillField(level);
 
     const levelSpan = document.querySelector("#level");
     levelSpan.innerText = `${level}-9`;
+
+    correctImg.style.display = "block";
   }
+  else {
+    notcorrectImg.style.display = "block";
+  }
+
+  answerStatusModal.style.animationName = "slideIn";
+  removeField();
+  createField(level);
+  fillField(level);
 }
 
 const getRndColor = (max = 5) => {
