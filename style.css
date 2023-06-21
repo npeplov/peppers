@@ -138,6 +138,7 @@ main {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 .field__wrapper {
@@ -236,6 +237,11 @@ main {
   box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .2);
 }
 
+.summary {
+  background: #ffffff;
+  transition: all ease 1s;
+} 
+
 .summary__header {
   width: 632px;
   height: 120px;
@@ -255,7 +261,6 @@ main {
 }
 
 .modal {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,10 +270,14 @@ main {
   right: 0;
   position: absolute;
   animation-duration: 1s;
-  transform: translateX(100vw);
+  transform: translateX(100%);
 }
 
-@keyframes slideIn {
+.answer-status {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+@keyframes slideInOut {
   0% {
     transform: translateX(100%);
   }
@@ -281,4 +290,9 @@ main {
   100% {
     transform: translateX(-100%);
   }
+}
+
+.slidein {
+  left: 0;
+  transform: translateX(0);
 }
