@@ -14,7 +14,6 @@ h2 {
 
 body {
   font-family: Montserrat;
-
   font-size: 1.125rem;
   line-height: 1.6;
   height: 50vh;
@@ -60,18 +59,59 @@ main {
   max-width: 650px;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button {
+.game__button {
   border: none;
   color: white;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 3rem;
   cursor: pointer;
+}
+
+.game__button:hover {
+  box-shadow: 0 7px 35px 0 rgba(0, 0, 0, .3);
+  /* transform: rotate(90deg); */
+
+
+  /* transform: scale(10); */
+}
+
+.game__button>span {
+  display: block;
+}
+
+.game__button>span {
+  animation-name: scaling;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(150%)
+  }
+
+  50% {
+    transform: scale(50%)
+  }
+
+  100% {
+    transform: scale(150%)
+  }
+}
+
+@keyframes scale-rotate {
+  0% {
+    transform: scale(50%) rotate(-30deg);
+  }
+
+  50% {
+    transform: scale(150%) rotate(30deg);
+  }
+
+  100% {
+    transform: scale(50%) rotate(-30deg);
+  }
 }
 
 .goal {

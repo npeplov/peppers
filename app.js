@@ -5,7 +5,11 @@ const fieldWrapper = document.querySelector(".field__wrapper");
 // v верстка дива, v кнопка стили
 // v 4 рандомный цвет бэкграунда
 
-// 5 вращение
+// v 5 вращение
+// - выписать на каком уровне появляется
+// - какой градус
+// - увеличение
+// - код
 // 6 рефактор
 // - без харкод величин в контейнере
 // - тустринг ===
@@ -45,7 +49,7 @@ const showSummary = () => {
 const timer = () => {
   const timerSpan = document.querySelector("#timer");
 
-  let seconds = 1;
+  let seconds = 60;
   let timerId = setInterval(() => {
     timerSpan.innerText = `00:${seconds.toString().padStart(2, "0")}`;
     if (seconds > 0) seconds -= 1;
@@ -63,13 +67,7 @@ const createField = (level = 1) => {
   fieldWrapper.appendChild(field);
   appWrapper.style.background = getRndColor(4);
 
-  // fieldWrapper.style.background = 
-  // parent element установить цвет
-  // у результата и игры одинаковое название класса
-  // 1 удалять элемент при завершении - не подходит так как выезжает уже покрашенный
-  // 
-
-  const { numbers, digits } = levels[level];
+  const { numbers } = levels[level];
 
   if (numbers === 6) field.classList.add("cols3");
   if (numbers === 12) field.classList.add("cols4");
@@ -86,7 +84,7 @@ const fillField = (level = 1) => {
   const field = document.querySelector(".grid-container");
 
   const goal = document.querySelector("#goal");
-  const { numbers, digits } = levels[level];
+  const { numbers, digits, animation } = levels[level];
 
   const numbersArr = getRndNumbersArr(digits, numbers);
   const targetInd = getRndNumber(numbers-1, 0);
@@ -96,12 +94,17 @@ const fillField = (level = 1) => {
 
   for (let i = 0; i < numbersArr.length; i++) {
     const button = document.createElement("button");
+    const span = document.createElement("span");
     button.style.background = getRndColor();
+    button.classList.add("game__button")
+    button.appendChild(span);
 
-    if (i === targetInd) button.innerText = targetNum;
-    else button.innerText = numbersArr[i];
+    if (i === targetInd) span.innerText = targetNum;
+    else span.innerText = numbersArr[i];
 
     field.appendChild(button);
+    
+    span.style.animationName = animation;
   }
 
   field.addEventListener("click", checkNumber);
@@ -153,13 +156,13 @@ const getRndNumbersArr = (max, items) => {
 const levels = {
   1: { numbers: 6, digits: 9 },
   2: { numbers: 6, digits: 9 },
-  3: { numbers: 6, digits: 9 }, // мигание размера чисел и button с фоном
-  4: { numbers: 12, digits: 99 }, // 3/12
-  5: { numbers: 12, digits: 99 }, // 3/12 4*3
-  6: { numbers: 16, digits: 999 }, // 3/16 - вращение на 30гр чисел
-  7: { numbers: 16, digits: 999 }, // 4/16 4*4
-  8: { numbers: 25, digits: 999 }, // 4/25
-  9: { numbers: 25, digits: 9999 }, // 4/25 5*5
+  3: { numbers: 6, digits: 9, animation: "scale" }, // мигание размера чисел и button с фоном
+  4: { numbers: 12, digits: 99, animation: "scale" }, // 3/12
+  5: { numbers: 12, digits: 99, animation: "scale" }, // 3/12 4*3
+  6: { numbers: 16, digits: 999, animation: "scale-rotate" }, // 3/16 - вращение на 30гр чисел
+  7: { numbers: 16, digits: 999, animation: "scale-rotate" }, // 4/16 4*4
+  8: { numbers: 25, digits: 999, animation: "scale-rotate" }, // 4/25
+  9: { numbers: 25, digits: 9999, animation: "scale-rotate" }, // 4/25 5*5
 };
 
 let targetNum;
