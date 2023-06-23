@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -18,25 +18,38 @@
   <div class="container">
     <div class="app__wrapper">
 
-      <header class="statistics">
-        <ul class="statistics__list">
-          <li>Время <span id="timer">00:60</span></li>
-          <li>Уровень <span id="level">1-9</span></li>
-          <li>Очки <span id="scores">0</span></li>
-          <li>Бонус <span id="bonus">x1</span></li>
-        </ul>
-      </header>
+      <div class="game__wrapper">
+        
+        <header class="statistics">
+          <ul class="statistics__list">
+            <li>Время <span id="timer">00:60</span></li>
+            <li>Уровень <span id="level">1-9</span></li>
+            <li>Очки <span id="scores">0</span></li>
+            <li>Бонус <span id="bonus">x1</span></li>
+          </ul>
+        </header>
 
-      <section class="goal">
-        <h2>Найдите указанное число: </h2>
-        <span id="goal"></span>
-      </section>
+        <section class="goal">
+          <h2>Найдите указанное число: </h2>
+          <span id="goal"></span>
+        </section>
 
-      <main class="main">
-        <div class="field__wrapper">
+        <main class="main">
+          <div class="field__wrapper">
 
+          </div>
+        </main>
+      </div>
+
+      <div class="modal start-game">
+        <div class="container">
+          <footer class="footer">
+          <button class="btn btn-primary btn-start">Start</button>
+          </footer>
         </div>
-      </main>
+      </div>
+
+
 
       <div class="modal answer-status">
         <div class="container">
@@ -45,16 +58,14 @@
         </div>
       </div>
 
-      
-      <div class="modal summary">
-        <div class="container">
 
+      <div class="modal summary slideout">
+        <div class="container">
           <header class="summary__header">
             <h2>
               Ваши результаты
             </h2>
           </header>
-
           <section id="results">
             <div>Текущий результат</div>
             <div><span id="result__current"></span></div>
@@ -70,10 +81,10 @@
           </section>
 
           <footer class="footer">
-            <button class="btn btn-primary">Далее</button>
+            <button class="btn btn-primary btn-again">Далее</button>
           </footer>
-
         </div>
+
       </div>
 
       <!-- 

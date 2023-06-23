@@ -139,6 +139,15 @@ main {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  min-height: 454px;
+}
+
+.game__wrapper {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .field__wrapper {
@@ -270,7 +279,7 @@ main {
   right: 0;
   position: absolute;
   animation-duration: 1s;
-  transform: translateX(100%);
+  transform: translateX(101%);
 }
 
 .answer-status {
@@ -295,4 +304,19 @@ main {
 .slidein {
   left: 0;
   transform: translateX(0);
+}
+
+.slideout {
+  transform: translateX(100%);
+}
+
+.start-game {
+  transform: translateX(0%);
+  background: #ffffff;
+  width: 100%;
+}
+
+.btn-start {
+  padding: 16px;
+  
 }
